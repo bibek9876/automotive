@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+  --color-ink: #090c0d;
+  --color-surface: #111618;
+  --color-surface-soft: #171d20;
+  --color-line: rgba(255, 255, 255, 0.09);
+  --color-copy: #d2d7d8;
+  --color-muted: #8a9297;
+  --color-accent: #1f4b44;
+  --color-accent-soft: #2d6259;
+  --color-paper: #f4f4f1;
+  --section-space: clamp(5.5rem, 8vw, 8.5rem);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(45, 98, 89, 0.18), transparent 26%),
+    radial-gradient(circle at 82% 10%, rgba(255, 255, 255, 0.04), transparent 18%),
+    linear-gradient(180deg, #080a0b 0%, #0c1012 42%, #090c0d 100%);
+  color: white;
+  font-family: "Aptos", "Segoe UI Variable Text", "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.01em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bahnschrift", "Aptos Display", "Segoe UI Variable Display", sans-serif;
+}
+
+::selection {
+  background: rgba(47, 94, 85, 0.55);
+  color: white;
+}
+
+.section-shell {
+  margin-inline: auto;
+  width: min(100% - 2.25rem, 1240px);
+}
+
+.section-label {
+  color: var(--color-muted);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.glass-panel {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.025)
+  );
+  border: 1px solid var(--color-line);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(16px);
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.section-heading {
+  font-size: clamp(2.5rem, 3.4vw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.section-copy {
+  color: var(--color-copy);
+  font-size: clamp(1rem, 1.05vw, 1.08rem);
+  line-height: 1.95;
+}
+
+.hairline-top {
+  position: relative;
+}
+
+.hairline-top::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+}
+
+.section-stack > section + section {
+  margin-top: clamp(1rem, 2vw, 1.75rem);
+}
