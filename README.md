@@ -18,7 +18,6 @@ Update the placeholders in `src/components/QuoteForm.jsx`:
 - `YOUR_TEMPLATE_ID`
 - `YOUR_PUBLIC_KEY`
 
-The EmailJS service ID is already set to `service_6aj8aq2`.
 
 ## Build
 
