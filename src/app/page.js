@@ -90,7 +90,7 @@ const galleryItems = [
 
 export default function HomePage() {
   return (
-    <main className="section-stack bg-[var(--color-ink)] px-3 pb-3 text-white sm:px-4 sm:pb-4">
+    <main className="section-stack bg-[var(--color-ink)] text-white">
       <Navbar />
       <Hero />
       <Services services={services} />
