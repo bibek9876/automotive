@@ -3,7 +3,7 @@
   <rect width="1200" height="900" fill="url(#paint0_radial)"/>
   <rect y="650" width="1200" height="250" fill="#11181B"/>
   <path d="M165 634L306 430H848L1035 634H165Z" fill="#1A2225"/>
-  <path d="M233 447H820L983 624H183L233 447Z" stroke="#68877F" stroke-width="3"/>
+  <path d="M233 447H820L983 624H183L233 447Z" stroke="#679BEB" stroke-width="3"/>
   <path d="M323 476H767L847 576H252L323 476Z" fill="#D5DEDA" fill-opacity="0.08"/>
   <circle cx="343" cy="705" r="62" fill="#090C0E"/>
   <circle cx="343" cy="705" r="33" fill="#2C3437"/>
@@ -13,7 +13,7 @@
   <path d="M944 228H1090V598H944V228Z" fill="#141B1E"/>
   <defs>
     <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(225 123) rotate(46.283) scale(601.208 482.395)">
-      <stop stop-color="#21463F" stop-opacity="0.32"/>
+      <stop stop-color="#1F6FEB" stop-opacity="0.32"/>
       <stop offset="1" stop-color="#0B0F11" stop-opacity="0"/>
     </radialGradient>
   </defs>

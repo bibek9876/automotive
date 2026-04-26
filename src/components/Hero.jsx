@@ -27,9 +27,9 @@ export default function Hero() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,8,9,0.88)_0%,rgba(6,8,9,0.58)_42%,rgba(6,8,9,0.76)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,8,9,0.32)_0%,rgba(6,8,9,0.14)_24%,rgba(6,8,9,0.58)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_16%,rgba(255,255,255,0.08),transparent_18%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,10,20,0.9)_0%,rgba(4,10,20,0.58)_42%,rgba(4,10,20,0.78)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,16,32,0.3)_0%,rgba(6,16,32,0.14)_24%,rgba(4,10,20,0.62)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_16%,rgba(74,141,255,0.18),transparent_20%)]" />
       </div>
 
       <div className="section-shell relative flex min-h-[calc(100vh-89px)] items-center py-16 sm:py-20">
@@ -59,9 +59,9 @@ export default function Hero() {
             variants={fadeUp}
             className="mt-7 max-w-2xl text-[1.03rem] leading-8 text-white/82 sm:text-lg"
           >
-            Sarav Motors Auto Repair Center delivers disciplined servicing,
-            repairs, and inspections with clear communication, modern workshop
-            standards, and a premium finish from the first call to handover.
+            Sarav Motors delivers disciplined servicing, repairs, and
+            inspections with clear communication, modern workshop standards,
+            and a premium finish from the first call to handover.
           </motion.p>
           <motion.div
             initial="hidden"
@@ -72,7 +72,7 @@ export default function Hero() {
           >
             <a
               href="#quote"
-              className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition duration-300 hover:bg-[var(--color-paper)]"
+              className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-sm font-semibold text-white transition duration-300 hover:bg-[var(--color-accent-soft)]"
             >
               Get a Quote
             </a>

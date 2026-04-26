@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="section-shell flex flex-col gap-6 py-10 text-sm text-[var(--color-muted)] sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-[1.02rem] font-semibold tracking-[-0.02em] text-white">
-            Sarav Motors Auto Repair Center
+            Sarav Motors
           </p>
           <p className="mt-2 max-w-lg leading-7">
             Premium automotive servicing and repairs in Braeside, Victoria.

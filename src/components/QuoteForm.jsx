@@ -69,10 +69,6 @@ export default function QuoteForm({ services }) {
           <h2 className="section-heading mt-4 text-white">
             Send the details once. Get a practical response without chasing.
           </h2>
-          <p className="section-copy mt-6 max-w-xl">
-            This form uses EmailJS on the client with the provided service ID.
-            Replace the template and public key placeholders before going live.
-          </p>
           <div className="mt-10 space-y-4 text-sm text-[var(--color-copy)]">
             <div className="glass-panel rounded-[1.6rem] p-6">
               <p className="text-[11px] uppercase tracking-[0.26em] text-white/48">Phone</p>
@@ -178,7 +174,7 @@ export default function QuoteForm({ services }) {
             <button
               type="submit"
               disabled={isSending}
-              className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition duration-300 hover:bg-[var(--color-paper)] disabled:cursor-not-allowed disabled:opacity-70"
+              className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3.5 text-sm font-semibold text-white transition duration-300 hover:bg-[var(--color-accent-soft)] disabled:cursor-not-allowed disabled:opacity-70"
             >
               {isSending ? "Sending..." : "Request Quote"}
             </button>

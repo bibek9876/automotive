@@ -17,7 +17,7 @@ export default function About() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="relative overflow-hidden rounded-[2.1rem] border border-white/8 bg-white/[0.03]"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(47,94,85,0.28),transparent_46%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(74,141,255,0.28),transparent_46%)]" />
           <Image
             src="/images/handshake.png"
             alt="Customer and technician shaking hands inside a premium automotive workshop"
@@ -39,11 +39,10 @@ export default function About() {
           </h2>
           <div className="section-copy mt-8 space-y-6">
             <p>
-              Sarav Motors Auto Repair Center supports drivers with premium
-              everyday servicing, major repair work, and honest vehicle
-              inspections. The approach is simple: diagnose properly, explain
-              clearly, and deliver work that feels considered from start to
-              finish.
+              Sarav Motors supports drivers with premium everyday servicing,
+              major repair work, and honest vehicle inspections. The approach
+              is simple: diagnose properly, explain clearly, and deliver work
+              that feels considered from start to finish.
             </p>
             <p>
               From log book servicing through to tyres, brakes, batteries, and

@@ -16,7 +16,7 @@
   <path d="M160 792H1040" stroke="#293136" stroke-width="3"/>
   <defs>
     <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(862 120) rotate(135.533) scale(621.922 566.792)">
-      <stop stop-color="#21463F" stop-opacity="0.35"/>
+      <stop stop-color="#1F6FEB" stop-opacity="0.35"/>
       <stop offset="1" stop-color="#0C1012" stop-opacity="0"/>
     </radialGradient>
   </defs>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const hotspots = [
   {
@@ -58,7 +58,7 @@ const hotspots = [
     title: "Battery Replacement",
     description:
       "Battery testing and replacement to keep starting performance dependable across daily use.",
-    anchor: { x: 61, y: 22 },
+    anchor: { x: 50, y: 29 },
     trigger: { x: 76, y: 8, align: "right" },
   },
   {
@@ -102,6 +102,31 @@ function getPath(hotspot) {
 
 export default function Services() {
   const [activeId, setActiveId] = useState(hotspots[0].id);
+  const panelRefs = useRef({});
+
+  useEffect(() => {
+    if (!activeId) {
+      return;
+    }
+
+    function handlePointerDown(event) {
+      const activePanel = panelRefs.current[activeId];
+      if (!activePanel) {
+        return;
+      }
+
+      if (activePanel.contains(event.target)) {
+        return;
+      }
+
+      setActiveId("");
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, [activeId]);
 
   return (
     <section
@@ -117,7 +142,7 @@ export default function Services() {
       </div>
 
       <div className="mt-16">
-        <div className="relative hidden overflow-hidden bg-black/25 lg:block">
+        <div className="relative hidden overflow-visible bg-black/25 lg:block">
           <div className="relative left-1/2 aspect-[16/9] w-screen -translate-x-1/2">
             <Image
               src="/images/mercedes-benz.png"
@@ -173,6 +198,13 @@ export default function Services() {
                     {isActive ? (
                       <motion.div
                         id={`service-panel-${hotspot.id}`}
+                        ref={(element) => {
+                          if (element) {
+                            panelRefs.current[hotspot.id] = element;
+                          } else {
+                            delete panelRefs.current[hotspot.id];
+                          }
+                        }}
                         initial={{ opacity: 0, scale: 0.88 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.92 }}
@@ -194,7 +226,7 @@ export default function Services() {
                           onClick={() => setActiveId("")}
                           className="flex w-[17rem] items-start gap-3 rounded-[1.3rem] border border-white/14 bg-[rgba(255,255,255,0.94)] p-3.5 text-left text-black shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl"
                         >
-                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black text-lg leading-none text-white">
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black text-[1.35rem] leading-none text-white">
                             +
                           </span>
                           <span id={`service-panel-${hotspot.id}`} className="block">
@@ -220,13 +252,13 @@ export default function Services() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute z-20 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-black/8 bg-white text-black shadow-[0_10px_30px_rgba(0,0,0,0.22)] transition duration-300 hover:scale-[1.04]"
+                        className="absolute z-10 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-black/8 bg-white text-black shadow-[0_10px_30px_rgba(0,0,0,0.22)] transition duration-300 hover:scale-[1.04]"
                         style={{
                           left: `${hotspot.trigger.x}%`,
                           top: `${hotspot.trigger.y}%`,
                         }}
                       >
-                        <span className="text-xl leading-none">+</span>
+                        <span className="block translate-y-[-1px] text-[1.35rem] leading-none">+</span>
                       </motion.button>
                     )}
                   </AnimatePresence>
@@ -257,7 +289,7 @@ export default function Services() {
                     <span className="font-semibold tracking-[-0.02em]">
                       {hotspot.title}
                     </span>
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-lg text-black">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[1.35rem] leading-none text-black">
                       +
                     </span>
                   </button>

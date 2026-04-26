@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Sarav Motors Auto Repair Center",
+  title: "Sarav Motors",
   description:
     "Premium automotive servicing, repairs, inspections, and roadside support in Braeside, Victoria.",
 };

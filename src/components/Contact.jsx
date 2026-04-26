@@ -45,7 +45,7 @@ export default function Contact() {
           className="overflow-hidden rounded-[2rem] border border-white/8 bg-white/[0.03]"
         >
           <iframe
-            title="Sarav Motors Auto Repair Center map"
+            title="Sarav Motors map"
             src="https://www.google.com/maps?q=3%2F356%20Lower%20Dandenong%20Rd%2C%20Braeside%20VIC%203195%2C%20Australia&z=15&output=embed"
             className="h-[420px] w-full"
             loading="lazy"

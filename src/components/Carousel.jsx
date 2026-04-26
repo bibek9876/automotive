@@ -24,7 +24,7 @@ export default function Carousel({ items }) {
           <div className="max-w-3xl">
             <p className="section-label text-[11px] font-semibold">Workshop View</p>
             <h2 className="section-heading mt-4 text-white">
-              A scroll-led gallery with motion that feels engineered, not decorative.
+              Our top services, trusted by local drivers for everyday care and major repairs.
             </h2>
           </div>
         </div>
