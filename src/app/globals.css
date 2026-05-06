@@ -1,15 +1,26 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --color-ink: #07111f;
-  --color-surface: #0d1b2e;
-  --color-surface-soft: #14253a;
-  --color-line: rgba(255, 255, 255, 0.09);
-  --color-copy: #d5deea;
-  --color-muted: #90a2bb;
-  --color-accent: #1f6feb;
-  --color-accent-soft: #4a8dff;
-  --color-paper: #eef4ff;
+  --color-navy: #0a1628;
+  --color-navy-surface: #14243d;
+  --color-navy-border: #1e3252;
+  --color-brand: #2563eb;
+  --color-brand-hover: #1d4ed8;
+  --color-brand-light: #60a5fa;
+  --color-gold: #c9a961;
+  --color-gold-soft: #e4c988;
+  --color-ink: #ffffff;
+  --color-ink-soft: #e5e7eb;
+  --color-ink-muted: #94a3b8;
+  --color-state-success: #10b981;
+  --color-state-warning: #f59e0b;
+  --color-state-danger: #ef4444;
+  --color-divider: rgba(255, 255, 255, 0.08);
+  --color-divider-strong: rgba(255, 255, 255, 0.15);
+  --color-hover-overlay: rgba(255, 255, 255, 0.08);
+  --color-surface-overlay: rgba(20, 36, 61, 0.78);
+  --color-surface-overlay-strong: rgba(20, 36, 61, 0.92);
+  --color-selection: rgba(37, 99, 235, 0.4);
   --section-space: clamp(5.5rem, 8vw, 8.5rem);
 }
 
@@ -21,11 +32,11 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at 8% 0%, rgba(74, 141, 255, 0.22), transparent 28%),
-    radial-gradient(circle at 82% 10%, rgba(255, 255, 255, 0.05), transparent 18%),
-    linear-gradient(180deg, #060d18 0%, #0b1627 42%, #07111f 100%);
-  color: white;
-  font-family: "Aptos", "Segoe UI Variable Text", "Segoe UI", sans-serif;
+    radial-gradient(circle at 8% 0%, rgba(37, 99, 235, 0.18), transparent 28%),
+    radial-gradient(circle at 82% 10%, rgba(96, 165, 250, 0.06), transparent 18%),
+    linear-gradient(180deg, #0a1628 0%, #0a1628 42%, #0a1628 100%);
+  color: var(--color-ink);
+  font-family: 'Aptos', 'Segoe UI Variable Text', 'Segoe UI', sans-serif;
   text-rendering: optimizeLegibility;
   letter-spacing: -0.01em;
   -ms-overflow-style: none;
@@ -41,12 +52,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Bahnschrift", "Aptos Display", "Segoe UI Variable Display", sans-serif;
+  font-family: 'Bahnschrift', 'Aptos Display', 'Segoe UI Variable Display', sans-serif;
 }
 
 ::selection {
-  background: rgba(74, 141, 255, 0.55);
-  color: white;
+  background: var(--color-selection);
+  color: var(--color-ink);
 }
 
 .section-shell {
@@ -55,7 +66,7 @@ h6 {
 }
 
 .section-label {
-  color: var(--color-muted);
+  color: var(--color-ink-muted);
   letter-spacing: 0.3em;
   text-transform: uppercase;
 }
@@ -63,18 +74,18 @@ h6 {
 .glass-panel {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.025)
+    var(--color-surface-overlay-strong),
+    var(--color-surface-overlay)
   );
-  border: 1px solid var(--color-line);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--color-navy-border);
+  box-shadow: 0 24px 80px rgba(10, 22, 40, 0.28);
   backdrop-filter: blur(16px);
 }
 
 .grid-pattern {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(var(--color-divider) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-divider) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
@@ -89,7 +100,7 @@ h6 {
 }
 
 .section-copy {
-  color: var(--color-copy);
+  color: var(--color-ink-soft);
   font-size: clamp(1rem, 1.05vw, 1.08rem);
   line-height: 1.95;
 }
@@ -99,11 +110,11 @@ h6 {
 }
 
 .hairline-top::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0 0 auto;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-divider-strong), transparent);
 }
 
 .section-stack > section + section {

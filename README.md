@@ -18,7 +18,6 @@ Update the placeholders in `src/components/QuoteForm.jsx`:
 - `YOUR_TEMPLATE_ID`
 - `YOUR_PUBLIC_KEY`
 
-
 ## Build
 
 ```bash
