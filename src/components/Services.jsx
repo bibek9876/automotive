@@ -1,156 +1,70 @@
 // @ts-check
-
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
 
 const services = [
-  {
-    title: 'Log Book Service',
-    description:
-      'Scheduled servicing aligned with manufacturer intervals to help protect reliability and warranty expectations.',
-  },
-  {
-    title: 'Mechanical Repairs',
-    description:
-      'Diagnostics and repair work for everyday drivability issues, wear items, and workshop-critical faults.',
-  },
-  {
-    title: 'Brakes',
-    description:
-      'Brake inspections, pad and rotor replacement, and servicing focused on safe, predictable stopping.',
-  },
-  {
-    title: 'Clutch / Transmission',
-    description:
-      'Driveline servicing and repair work to restore smooth gear changes and consistent power delivery.',
-  },
-  {
-    title: 'Tyres & Wheels',
-    description:
-      'Tyre fitting, balancing, wheel care, and replacement support for road feel, grip, and stability.',
-  },
-  {
-    title: 'Pre Purchase Inspection',
-    description:
-      'Independent inspection reporting to give buyers a clearer picture of a vehicle before committing.',
-  },
-  {
-    title: 'Battery Replacement',
-    description:
-      'Battery testing and replacement to keep starting performance dependable across daily use.',
-  },
-  {
-    title: 'Wheel Alignment',
-    description:
-      'Alignment correction for cleaner steering response, better tracking, and improved tyre life.',
-  },
-  {
-    title: 'Roadside Assistance',
-    description: 'Practical support when a vehicle is immobilised and immediate help matters most.',
-  },
+  { title: 'Log Book Service', description: 'Scheduled servicing aligned with manufacturer intervals to protect reliability and warranty.' },
+  { title: 'Mechanical Repairs', description: 'Diagnostics and repair work for drivability issues and critical faults.' },
+  { title: 'Brakes', description: 'Brake inspections, pad/rotor replacement, and servicing for safe stopping.' },
+  { title: 'Clutch / Transmission', description: 'Driveline servicing to restore smooth gear changes and power delivery.' },
+  { title: 'Tyres & Wheels', description: 'Tyre fitting, balancing, and wheel support for stability and grip.' },
+  { title: 'Pre Purchase Inspection', description: 'Independent inspections to help buyers make informed decisions.' },
+  { title: 'Battery Replacement', description: 'Battery testing and replacement for reliable starting performance.' },
+  { title: 'Wheel Alignment', description: 'Improves steering response, tracking, and tyre life.' },
+  { title: 'Roadside Assistance', description: 'Immediate support when your vehicle is immobilised.' },
 ];
 
 const mobileService = {
   title: 'Mobile Battery Replacement & Vehicle Servicing',
   summary:
-    'On-site battery replacement, jump-start support, and practical vehicle servicing delivered at your location.',
+    'On-site battery replacement, jump-start support, and practical servicing delivered at your location.',
   details: [
     'On-site battery testing and replacement',
     'Emergency jump-start assistance',
     'Battery health diagnostics',
-    'Basic vehicle servicing and inspections',
-    'Convenient, location-based support',
+    'Basic vehicle servicing',
+    'Convenient mobile support',
   ],
 };
 
-/**
- * @param {'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'} headingLevel
- * @param {string} headingId
- * @param {string} text
- * @returns {import('react').ReactElement}
- */
-function renderHeading(headingLevel, headingId, text) {
-  switch (headingLevel) {
-    case 'h1':
-      return (
-        <h1 id={headingId} className="section-heading mt-4 text-[var(--color-ink)]">
-          {text}
-        </h1>
-      );
-    case 'h3':
-      return (
-        <h3 id={headingId} className="section-heading mt-4 text-[var(--color-ink)]">
-          {text}
-        </h3>
-      );
-    case 'h4':
-      return (
-        <h4 id={headingId} className="section-heading mt-4 text-[var(--color-ink)]">
-          {text}
-        </h4>
-      );
-    case 'h5':
-      return (
-        <h5 id={headingId} className="section-heading mt-4 text-[var(--color-ink)]">
-          {text}
-        </h5>
-      );
-    case 'h6':
-      return (
-        <h6 id={headingId} className="section-heading mt-4 text-[var(--color-ink)]">
-          {text}
-        </h6>
-      );
-    case 'h2':
-    default:
-      return (
-        <h2 id={headingId} className="section-heading mt-4 text-[var(--color-ink)]">
-          {text}
-        </h2>
-      );
-  }
+const headingClasses = 'section-heading mt-4 text-[var(--color-ink)]';
+
+function SectionHeading({ level = 'h2', id, text }) {
+  const Tag = level;
+  return (
+    <Tag id={id} className={headingClasses}>
+      {text}
+    </Tag>
+  );
 }
 
-/**
- * @param {{ headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'; headingId?: string }} props
- * @returns {import('react').ReactElement}
- */
 export default function Services({ headingLevel = 'h2', headingId = 'services-heading' }) {
-  const [isMobileServiceOpen, setIsMobileServiceOpen] = useState(false);
-  const mobileServiceRef = useRef(/** @type {HTMLDivElement | null} */ (null));
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
+  // Close dropdown on outside click / escape
   useEffect(() => {
-    if (!isMobileServiceOpen) {
-      return undefined;
-    }
+    if (!isOpen) return;
 
-    /**
-     * @param {MouseEvent} event
-     */
-    function handlePointerDown(event) {
-      if (!mobileServiceRef.current?.contains(/** @type {Node} */ (event.target))) {
-        setIsMobileServiceOpen(false);
+    const handleClick = (e) => {
+      if (!dropdownRef.current?.contains(e.target)) {
+        setIsOpen(false);
       }
-    }
+    };
 
-    /**
-     * @param {KeyboardEvent} event
-     */
-    function handleKeyDown(event) {
-      if (event.key === 'Escape') {
-        setIsMobileServiceOpen(false);
-      }
-    }
+    const handleKey = (e) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
 
-    document.addEventListener('mousedown', handlePointerDown);
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', handleClick);
+    document.addEventListener('keydown', handleKey);
 
     return () => {
-      document.removeEventListener('mousedown', handlePointerDown);
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClick);
+      document.removeEventListener('keydown', handleKey);
     };
-  }, [isMobileServiceOpen]);
+  }, [isOpen]);
 
   return (
     <section
@@ -159,19 +73,23 @@ export default function Services({ headingLevel = 'h2', headingId = 'services-he
       className="border-b border-[var(--color-divider)] py-[var(--section-space)]"
     >
       <div className="section-shell">
+        {/* Header */}
         <div className="max-w-3xl">
           <p className="section-label text-[11px] font-semibold">Services</p>
-          {renderHeading(
-            headingLevel,
-            headingId,
-            'Straightforward workshop services, clearly listed.'
-          )}
+
+          <SectionHeading
+            level={headingLevel}
+            id={headingId}
+            text="Straightforward workshop services, clearly listed."
+          />
+
           <p className="section-copy mt-6">
-            The workshop covers essential servicing, repair, and inspection work without the
-            interactive map treatment. This section keeps the offer simple and easier to scan.
+            We focus on essential servicing, repairs, and inspections — presented clearly and
+            without unnecessary complexity.
           </p>
         </div>
 
+        {/* Service Tags */}
         <div className="mt-12 flex flex-wrap gap-3">
           {services.map((service) => (
             <span
@@ -181,54 +99,56 @@ export default function Services({ headingLevel = 'h2', headingId = 'services-he
               {service.title}
             </span>
           ))}
-          <div className="relative" ref={mobileServiceRef}>
+
+          {/* Mobile Service Dropdown */}
+          <div className="relative" ref={dropdownRef}>
             <button
               type="button"
-              aria-expanded={isMobileServiceOpen}
-              aria-controls="mobile-service-dropdown"
-              onClick={() => setIsMobileServiceOpen((current) => !current)}
-              className={`rounded-full border px-4 py-2 text-sm font-semibold transition duration-300 ${
-                isMobileServiceOpen
-                  ? 'border-[var(--color-brand)] bg-[var(--color-brand)] text-[var(--color-ink)]'
+              aria-expanded={isOpen}
+              onClick={() => setIsOpen((prev) => !prev)}
+              className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                isOpen
+                  ? 'border-[var(--color-brand)] bg-[var(--color-brand)] text-white'
                   : 'border-[var(--color-divider)] bg-[var(--color-surface-overlay)] text-[var(--color-ink-soft)] hover:border-[var(--color-brand)] hover:text-[var(--color-brand-light)]'
               }`}
             >
               {mobileService.title}
             </button>
 
-            {isMobileServiceOpen ? (
-              <div
-                id="mobile-service-dropdown"
-                className="absolute left-0 z-20 mt-3 w-[min(28rem,calc(100vw-2rem))] rounded-[1.6rem] border border-[var(--color-divider)] bg-[rgba(7,16,31,0.96)] p-5 shadow-[0_24px_60px_rgba(0,0,0,0.28)] backdrop-blur"
-              >
+            {isOpen && (
+              <div className="absolute left-0 z-20 mt-3 w-[min(28rem,calc(100vw-2rem))] rounded-[1.6rem] border border-[var(--color-divider)] bg-[rgba(7,16,31,0.96)] p-5 shadow-xl backdrop-blur">
                 <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
                   Mobile Support
                 </p>
-                <p className="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
+
+                <p className="mt-3 text-sm text-[var(--color-ink-soft)]">
                   {mobileService.summary}
                 </p>
+
                 <div className="mt-4 grid gap-2">
                   {mobileService.details.map((detail) => (
                     <p
                       key={detail}
-                      className="rounded-[1rem] border border-[var(--color-divider)] bg-[var(--color-surface-overlay)] px-3 py-2 text-sm text-[var(--color-ink-soft)]"
+                      className="rounded-[1rem] border border-[var(--color-divider)] bg-[var(--color-surface-overlay)] px-3 py-2 text-sm"
                     >
                       {detail}
                     </p>
                   ))}
                 </div>
               </div>
-            ) : null}
+            )}
           </div>
         </div>
 
+        {/* Service Cards */}
         <div className="mt-14 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service) => (
             <article key={service.title} className="glass-panel rounded-[1.6rem] p-6">
-              <p className="text-[1.1rem] leading-7 font-semibold tracking-[-0.02em] text-[var(--color-ink)]">
+              <p className="text-[1.1rem] font-semibold text-[var(--color-ink)]">
                 {service.title}
               </p>
-              <p className="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
+
+              <p className="mt-3 text-sm text-[var(--color-ink-soft)]">
                 {service.description}
               </p>
             </article>
