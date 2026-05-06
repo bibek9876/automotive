@@ -1,5 +1,6 @@
 // @ts-check
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -22,15 +23,17 @@ export default function Navbar() {
         aria-label="Primary navigation"
         className="section-shell flex flex-col gap-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:py-5"
       >
-        <Link href="/" className="flex items-center">
-          <div>
-            <p className="text-[1.05rem] leading-none font-semibold tracking-[0.34em] text-[var(--color-ink)]">
-              SARAV
-            </p>
-            <p className="mt-1 text-[0.88rem] leading-none font-medium tracking-[0.3em] text-[var(--color-ink-muted)]">
-              MOTORS
-            </p>
-          </div>
+        <Link href="/" className="flex items-center" aria-label="Sarav Motors home">
+          <Image
+            src="/images/sarav-motors-logo-v2.png"
+            alt="Sarav Motors logo"
+            width={460}
+            height={460}
+            className="h-16 w-auto rounded-xl object-contain sm:h-18"
+            sizes="(max-width: 640px) 160px, 184px"
+            priority
+          />
+          <span className="sr-only">Sarav Motors</span>
         </Link>
 
         <div className="flex flex-wrap items-center gap-2 text-sm text-[var(--color-ink-muted)]">

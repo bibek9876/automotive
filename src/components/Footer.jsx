@@ -1,5 +1,7 @@
 // @ts-check
 
+import Image from 'next/image';
+
 /**
  * @returns {import('react').ReactElement}
  */
@@ -11,9 +13,14 @@ export default function Footer() {
     >
       <div className="section-shell flex flex-col gap-6 py-10 text-sm text-[var(--color-ink-muted)] sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-[1.02rem] font-semibold tracking-[-0.02em] text-[var(--color-ink)]">
-            Sarav Motors
-          </p>
+          <Image
+            src="/images/sarav-motors-logo-v2.png"
+            alt="Sarav Motors logo"
+            width={460}
+            height={460}
+            className="h-24 w-auto rounded-2xl object-contain"
+            sizes="160px"
+          />
           <p className="mt-2 max-w-lg leading-7">
             Premium automotive servicing and repairs in Braeside, Victoria.
           </p>
