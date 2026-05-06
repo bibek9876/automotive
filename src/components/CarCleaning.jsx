@@ -49,9 +49,9 @@ export default function CarCleaning() {
             variants={reveal}
             className="section-copy max-w-2xl"
           >
-            Detailing visuals now sit in their own section with sharper image treatment and
-            restrained spacing, so the page can showcase vehicle care without breaking the minimal
-            service-center feel.
+            This section now highlights both workshop and mobile support with sharper, more direct
+            imagery that fits the Sarav Motors brand and the services now offered on-site and on
+            the road.
           </motion.p>
         </div>
 
@@ -66,10 +66,10 @@ export default function CarCleaning() {
           >
             <div className="relative aspect-[16/10]">
               <Image
-                src="/images/braeside-car-wash.webp"
-                alt="Vehicle covered in foam during premium car cleaning at the Sarav Motors workshop in Braeside"
-                width={900}
-                height={600}
+                src="/images/sarav-mobile-battery-replacement.jpeg"
+                alt="Sarav Motors technician performing a mobile battery replacement beside a service vehicle"
+                width={1536}
+                height={1024}
                 className="h-full w-full object-cover"
                 sizes="(max-width: 1024px) 100vw, 58vw"
               />
@@ -77,15 +77,15 @@ export default function CarCleaning() {
             </div>
             <div className="p-7 sm:p-8">
               <p className="text-[11px] uppercase tracking-[0.28em] text-[var(--color-ink-muted)]">
-                Exterior Care
+                Mobile Support
               </p>
               <h3 className="mt-3 text-[1.8rem] leading-[1.04] font-semibold tracking-[-0.04em] text-[var(--color-ink)]">
-                Foam wash presentation that reinforces a premium handover.
+                Mobile battery replacement with clear branding and fast response.
               </h3>
               <p className="mt-4 text-sm leading-7 text-[var(--color-ink-soft)]">
-                Strong automotive branding depends on the finish, not just the repair. This section
-                gives the site a cleaner customer-facing moment between technical services and the
-                quote form.
+                The wider image now shows the mobile service offer directly, with a stronger
+                customer-facing message around rapid support, battery replacement, and callout
+                convenience at the client location.
               </p>
             </div>
           </motion.article>
@@ -100,10 +100,10 @@ export default function CarCleaning() {
           >
             <div className="relative aspect-[4/5] lg:aspect-[5/6]">
               <Image
-                src="/images/braeside-wheel-cleaning.webp"
-                alt="Close-up of wheel and tyre cleaning work at Sarav Motors in Braeside"
-                width={850}
-                height={567}
+                src="/images/sarav-workshop-engine-service.jpeg"
+                alt="Sarav Motors technician working on an engine inside the workshop"
+                width={1402}
+                height={1277}
                 className="h-full w-full object-cover"
                 sizes="(max-width: 1024px) 100vw, 42vw"
               />
@@ -111,15 +111,15 @@ export default function CarCleaning() {
             </div>
             <div className="p-7 sm:p-8">
               <p className="text-[11px] uppercase tracking-[0.28em] text-[var(--color-ink-muted)]">
-                Wheel Detail
+                Workshop Detail
               </p>
               <h3 className="mt-3 text-[1.5rem] leading-[1.08] font-semibold tracking-[-0.035em] text-[var(--color-ink)]">
-                Close-detail imagery for wheels, foam, and finishing work.
+                Close-detail workshop imagery that reinforces care and technical focus.
               </h3>
               <p className="mt-4 text-sm leading-7 text-[var(--color-ink-soft)]">
-                The tighter crop balances the wider wash image and gives the page a more editorial
-                layout, which suits the luxury-garage direction better than another generic card
-                grid.
+                The tighter crop balances the mobile service image and shows a hands-on workshop
+                environment, giving the page a more credible mix of field support and mechanical
+                precision.
               </p>
             </div>
           </motion.article>

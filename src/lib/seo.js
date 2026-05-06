@@ -18,7 +18,7 @@
 
 /** @type {SeoPlaceholders} */
 export const SEO_PLACEHOLDERS = {
-  domain: '{{DOMAIN}}',
+  domain: 'saravmotors.com.au',
   phone: '{{PHONE}}',
   addressLine1: '{{ADDRESS_LINE_1}}',
   postcode: '{{POSTCODE}}',

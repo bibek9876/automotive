@@ -64,6 +64,12 @@ export const services = [
     icon: 'battery',
   },
   {
+    title: 'Mobile Battery Replacement & Vehicle Servicing',
+    description:
+      'On-site battery replacement, jump-start support, and practical vehicle servicing delivered at your location.',
+    icon: 'battery',
+  },
+  {
     title: 'Wheel Alignment',
     description:
       'Precision alignment to improve handling, tyre life, and steering confidence on Australian roads.',
