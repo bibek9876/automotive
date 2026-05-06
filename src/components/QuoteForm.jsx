@@ -198,6 +198,17 @@ export default function QuoteForm({ services, headingLevel = 'h2', headingId = '
             </div>
             <div className="glass-panel rounded-[1.6rem] p-6">
               <p className="text-[11px] uppercase tracking-[0.26em] text-[var(--color-ink-muted)]">
+                Email
+              </p>
+              <a
+                href="mailto:saravmotors@gmail.com"
+                className="mt-3 block text-[1.12rem] font-semibold tracking-[-0.02em] text-[var(--color-brand-light)]"
+              >
+                saravmotors@gmail.com
+              </a>
+            </div>
+            <div className="glass-panel rounded-[1.6rem] p-6">
+              <p className="text-[11px] uppercase tracking-[0.26em] text-[var(--color-ink-muted)]">
                 Location
               </p>
               <p className="mt-3 text-[1.12rem] leading-8 font-semibold tracking-[-0.02em] text-[var(--color-ink)]">

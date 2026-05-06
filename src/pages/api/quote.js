@@ -6,6 +6,7 @@ import { quoteSchema } from '@/lib/quote-schema';
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
+const WORKSHOP_EMAIL = 'saravmotors@gmail.com';
 const requestStore = new Map();
 
 /**
@@ -93,6 +94,8 @@ export default async function handler(request, response) {
         user_id: EMAILJS_PUBLIC_KEY,
         accessToken: EMAILJS_PRIVATE_KEY,
         template_params: {
+          to_email: WORKSHOP_EMAIL,
+          reply_to: parsed.data.email,
           name: parsed.data.name,
           phone: parsed.data.phone,
           email: parsed.data.email,

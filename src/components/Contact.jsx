@@ -85,6 +85,17 @@ export default function Contact({ headingLevel = 'h2', headingId = 'contact-head
             </div>
             <div>
               <p className="text-[11px] uppercase tracking-[0.26em] text-[var(--color-ink-muted)]">
+                Email
+              </p>
+              <a
+                href="mailto:saravmotors@gmail.com"
+                className="mt-3 block text-[1.12rem] font-semibold tracking-[-0.02em] text-[var(--color-brand-light)]"
+              >
+                saravmotors@gmail.com
+              </a>
+            </div>
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.26em] text-[var(--color-ink-muted)]">
                 Address
               </p>
               <p className="mt-3 text-[1.06rem] leading-8 text-[var(--color-ink)]">

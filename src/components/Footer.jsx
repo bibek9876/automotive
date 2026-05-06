@@ -25,7 +25,15 @@ export default function Footer() {
           <a href="tel:0452066583" className="block font-semibold text-[var(--color-brand-light)]">
             0452066583
           </a>
+          <a
+            href="mailto:saravmotors@gmail.com"
+            className="block font-semibold text-[var(--color-brand-light)]"
+          >
+            saravmotors@gmail.com
+          </a>
           <p>3/356 Lower Dandenong Rd, Braeside VIC 3195, Australia</p>
+          <p>ABN 48 694 343 354</p>
+          <p>&copy; {new Date().getFullYear()} Sarav Motors. All rights reserved.</p>
         </div>
       </div>
     </footer>
