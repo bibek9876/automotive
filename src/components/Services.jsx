@@ -30,6 +30,13 @@ const mobileService = {
 
 const headingClasses = 'section-heading mt-4 text-[var(--color-ink)]';
 
+/**
+ * @param {{
+ * level?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+ * id: string;
+ * text: string;
+ * }} props
+ */
 function SectionHeading({ level = 'h2', id, text }) {
   const Tag = level;
   return (
@@ -39,8 +46,16 @@ function SectionHeading({ level = 'h2', id, text }) {
   );
 }
 
+/**
+ * @param {{
+ * headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+ * headingId?: string;
+ * }} props
+ */
 export default function Services({ headingLevel = 'h2', headingId = 'services-heading' }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  /** @type {import('react').MutableRefObject<HTMLDivElement | null>} */
   const dropdownRef = useRef(null);
 
   // Close dropdown on outside click / escape
@@ -73,6 +88,7 @@ export default function Services({ headingLevel = 'h2', headingId = 'services-he
       className="border-b border-[var(--color-divider)] py-[var(--section-space)]"
     >
       <div className="section-shell">
+
         {/* Header */}
         <div className="max-w-3xl">
           <p className="section-label text-[11px] font-semibold">Services</p>
@@ -105,6 +121,7 @@ export default function Services({ headingLevel = 'h2', headingId = 'services-he
             <button
               type="button"
               aria-expanded={isOpen}
+              aria-controls="mobile-service-dropdown"
               onClick={() => setIsOpen((prev) => !prev)}
               className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
                 isOpen
@@ -116,7 +133,10 @@ export default function Services({ headingLevel = 'h2', headingId = 'services-he
             </button>
 
             {isOpen && (
-              <div className="absolute left-0 z-20 mt-3 w-[min(28rem,calc(100vw-2rem))] rounded-[1.6rem] border border-[var(--color-divider)] bg-[rgba(7,16,31,0.96)] p-5 shadow-xl backdrop-blur">
+              <div
+                id="mobile-service-dropdown"
+                className="absolute left-0 z-20 mt-3 w-[min(28rem,calc(100vw-2rem))] rounded-[1.6rem] border border-[var(--color-divider)] bg-[rgba(7,16,31,0.96)] p-5 shadow-xl backdrop-blur"
+              >
                 <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
                   Mobile Support
                 </p>
@@ -154,6 +174,7 @@ export default function Services({ headingLevel = 'h2', headingId = 'services-he
             </article>
           ))}
         </div>
+
       </div>
     </section>
   );
