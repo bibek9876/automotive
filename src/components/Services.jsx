@@ -31,14 +31,21 @@ const mobileService = {
 const headingClasses = 'section-heading mt-4 text-[var(--color-ink)]';
 
 /**
- * @param {{
- * level?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
- * id: string;
- * text: string;
- * }} props
+ * @typedef {'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'} HeadingLevel
  */
-function SectionHeading({ level = 'h2', id, text }) {
+
+/**
+ * @param {{
+ *   level?: HeadingLevel;
+ *   id: string;
+ *   text: string;
+ * }} props
+ * @returns {import('react').ReactElement}
+ */
+function SectionHeading(props) {
+  const { level = 'h2', id, text } = props;
   const Tag = level;
+
   return (
     <Tag id={id} className={headingClasses}>
       {text}
@@ -48,28 +55,36 @@ function SectionHeading({ level = 'h2', id, text }) {
 
 /**
  * @param {{
- * headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
- * headingId?: string;
+ *   headingLevel?: HeadingLevel;
+ *   headingId?: string;
  * }} props
+ * @returns {import('react').ReactElement}
  */
 export default function Services({ headingLevel = 'h2', headingId = 'services-heading' }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  /** @type {import('react').MutableRefObject<HTMLDivElement | null>} */
+  /** @type {import('react').RefObject<HTMLDivElement | null>} */
   const dropdownRef = useRef(null);
 
-  // Close dropdown on outside click / escape
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) return undefined;
 
-    const handleClick = (e) => {
-      if (!dropdownRef.current?.contains(e.target)) {
+    /**
+     * @param {MouseEvent} event
+     */
+    const handleClick = (event) => {
+      if (!dropdownRef.current?.contains(/** @type {Node} */ (event.target))) {
         setIsOpen(false);
       }
     };
 
-    const handleKey = (e) => {
-      if (e.key === 'Escape') setIsOpen(false);
+    /**
+     * @param {KeyboardEvent} event
+     */
+    const handleKey = (event) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
     };
 
     document.addEventListener('mousedown', handleClick);
@@ -88,8 +103,6 @@ export default function Services({ headingLevel = 'h2', headingId = 'services-he
       className="border-b border-[var(--color-divider)] py-[var(--section-space)]"
     >
       <div className="section-shell">
-
-        {/* Header */}
         <div className="max-w-3xl">
           <p className="section-label text-[11px] font-semibold">Services</p>
 
@@ -105,7 +118,6 @@ export default function Services({ headingLevel = 'h2', headingId = 'services-he
           </p>
         </div>
 
-        {/* Service Tags */}
         <div className="mt-12 flex flex-wrap gap-3">
           {services.map((service) => (
             <span
@@ -116,7 +128,6 @@ export default function Services({ headingLevel = 'h2', headingId = 'services-he
             </span>
           ))}
 
-          {/* Mobile Service Dropdown */}
           <div className="relative" ref={dropdownRef}>
             <button
               type="button"
@@ -132,7 +143,7 @@ export default function Services({ headingLevel = 'h2', headingId = 'services-he
               {mobileService.title}
             </button>
 
-            {isOpen && (
+            {isOpen ? (
               <div
                 id="mobile-service-dropdown"
                 className="absolute left-0 z-20 mt-3 w-[min(28rem,calc(100vw-2rem))] rounded-[1.6rem] border border-[var(--color-divider)] bg-[rgba(7,16,31,0.96)] p-5 shadow-xl backdrop-blur"
@@ -149,24 +160,23 @@ export default function Services({ headingLevel = 'h2', headingId = 'services-he
                   {mobileService.details.map((detail) => (
                     <p
                       key={detail}
-                      className="rounded-[1rem] border border-[var(--color-divider)] bg-[var(--color-surface-overlay)] px-3 py-2 text-sm"
+                      className="rounded-[1rem] border border-[var(--color-divider)] bg-[var(--color-surface-overlay)] px-3 py-2 text-sm text-[var(--color-ink-soft)]"
                     >
                       {detail}
                     </p>
                   ))}
                 </div>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
 
-        {/* Service Cards */}
         <div className="mt-14 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service) => (
             <article key={service.title} className="glass-panel rounded-[1.6rem] p-6">
-              <p className="text-[1.1rem] font-semibold text-[var(--color-ink)]">
+              <h3 className="text-[1.1rem] font-semibold text-[var(--color-ink)]">
                 {service.title}
-              </p>
+              </h3>
 
               <p className="mt-3 text-sm text-[var(--color-ink-soft)]">
                 {service.description}
@@ -174,7 +184,6 @@ export default function Services({ headingLevel = 'h2', headingId = 'services-he
             </article>
           ))}
         </div>
-
       </div>
     </section>
   );
