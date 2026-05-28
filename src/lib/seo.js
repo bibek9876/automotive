@@ -30,7 +30,7 @@ export const SEO_PLACEHOLDERS = {
   googleBusinessUrl: 'https://share.google/BnuYOO0H02Y0bfr1S',
   gtmContainerId: 'GTM-MJFX9NF7',
   gaMeasurementId: '{{GA_MEASUREMENT_ID}}',
-  gscVerificationCode: '{{GSC_VERIFICATION_CODE}}',
+  gscVerificationCode: 'veDVPTmt7S_GVZc9xUM84kf_t4Lpn-_a3vrAFebnUU4',
 };
 
 export const BUSINESS = {
