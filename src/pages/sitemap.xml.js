@@ -6,7 +6,6 @@ import { SITE_URL } from '@/lib/seo';
  * @returns {string}
  */
 function buildSitemapXml() {
-  const lastModified = new Date().toISOString();
   const routes = [
     { path: '/', changeFrequency: 'monthly', priority: '1.0' },
     { path: '/services', changeFrequency: 'monthly', priority: '0.9' },
@@ -20,7 +19,6 @@ function buildSitemapXml() {
       return `
   <url>
     <loc>${url}</loc>
-    <lastmod>${lastModified}</lastmod>
     <changefreq>${changeFrequency}</changefreq>
     <priority>${priority}</priority>
   </url>`;

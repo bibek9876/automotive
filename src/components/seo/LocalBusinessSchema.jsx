@@ -1,13 +1,23 @@
 // @ts-check
 
-import Script from 'next/script';
-
-import { BUSINESS, DEFAULT_SEO, SEO_PLACEHOLDERS, SITE_URL } from '@/lib/seo';
+import {
+  BUSINESS,
+  DEFAULT_SEO,
+  SEO_PLACEHOLDERS,
+  SITE_URL,
+  getResolvedValues,
+} from '@/lib/seo';
 
 /**
  * @returns {import('react').ReactElement}
  */
 export default function LocalBusinessSchema() {
+  const sameAs = getResolvedValues([
+    SEO_PLACEHOLDERS.facebookUrl,
+    SEO_PLACEHOLDERS.instagramUrl,
+    SEO_PLACEHOLDERS.googleBusinessUrl,
+  ]);
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'AutoRepair',
@@ -50,18 +60,16 @@ export default function LocalBusinessSchema() {
       { '@type': 'City', name: 'Cheltenham' },
       { '@type': 'City', name: 'Mordialloc' },
     ],
-    sameAs: [
-      SEO_PLACEHOLDERS.facebookUrl,
-      SEO_PLACEHOLDERS.instagramUrl,
-      SEO_PLACEHOLDERS.googleBusinessUrl,
-    ],
   };
 
+  if (sameAs.length > 0) {
+    schema.sameAs = sameAs;
+  }
+
   return (
-    <Script
+    <script
       id="local-business-schema"
       type="application/ld+json"
-      strategy="afterInteractive"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />
   );

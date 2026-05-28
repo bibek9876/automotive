@@ -1,7 +1,5 @@
 // @ts-check
 
-import Script from 'next/script';
-
 import { getCanonicalUrl } from '@/lib/seo';
 
 /**
@@ -21,10 +19,9 @@ export default function BreadcrumbSchema({ items }) {
   };
 
   return (
-    <Script
+    <script
       id={`breadcrumb-schema-${items.map((item) => item.path).join('-')}`}
       type="application/ld+json"
-      strategy="afterInteractive"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />
   );

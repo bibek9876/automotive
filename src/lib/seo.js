@@ -11,6 +11,7 @@
  *   facebookUrl: string;
  *   instagramUrl: string;
  *   googleBusinessUrl: string;
+ *   gtmContainerId: string;
  *   gaMeasurementId: string;
  *   gscVerificationCode: string;
  * }} SeoPlaceholders
@@ -19,14 +20,15 @@
 /** @type {SeoPlaceholders} */
 export const SEO_PLACEHOLDERS = {
   domain: 'saravmotors.com.au',
-  phone: '{{PHONE}}',
-  addressLine1: '{{ADDRESS_LINE_1}}',
-  postcode: '{{POSTCODE}}',
-  latitude: '{{LAT}}',
-  longitude: '{{LNG}}',
-  facebookUrl: '{{FACEBOOK_URL}}',
-  instagramUrl: '{{INSTAGRAM_URL}}',
-  googleBusinessUrl: '{{GOOGLE_BUSINESS_URL}}',
+  phone: '0452 066 583',
+  addressLine1: '3/356 Lower Dandenong Rd',
+  postcode: '3195',
+  latitude: '-37.983846373932344',
+  longitude: '145.106708179243',
+  facebookUrl: 'https://www.facebook.com/p/Sarav-Motors-100067355328860/',
+  instagramUrl: '',
+  googleBusinessUrl: 'https://share.google/BnuYOO0H02Y0bfr1S',
+  gtmContainerId: 'GTM-MJFX9NF7',
   gaMeasurementId: '{{GA_MEASUREMENT_ID}}',
   gscVerificationCode: '{{GSC_VERIFICATION_CODE}}',
 };
@@ -42,7 +44,7 @@ export const BUSINESS = {
   primaryKeyword: 'car service Braeside',
 };
 
-export const SITE_URL = `https://${SEO_PLACEHOLDERS.domain}`;
+export const SITE_URL = `https://saravmotors.com.au`;
 
 export const DEFAULT_SEO = {
   title: 'Sarav Motors | Reliable Car Service & Repairs in Braeside',
@@ -52,11 +54,26 @@ export const DEFAULT_SEO = {
     'car service Braeside',
     'mechanic Braeside',
     'car repairs Braeside',
-    'roadworthy Braeside',
-    'logbook service Bayside',
+    'logbook service Braeside',
+    'auto repair Braeside',
+    'roadworthy certificate Braeside',
+    'brake repairs Braeside',
+    'battery replacement Braeside',
+    'mobile battery replacement Braeside',
+    'wheel alignment Braeside',
+    'tyre service Braeside',
+    'pre purchase inspection Braeside',
+    'car service Mordialloc',
+    'car service Cheltenham',
+    'car service Mentone',
+    'mechanic Bayside Melbourne',
+    'car service Lower Dandenong Road',
+    'European car service Braeside',
+    'vehicle inspection Braeside',
+    'trusted mechanic Braeside',
   ],
   ogImage: {
-    url: `${SITE_URL}/og-image.jpg`,
+    url: `https://saravmotors.com.au/og-image.jpg`,
     width: 1200,
     height: 630,
     alt: 'Sarav Motors workshop in Braeside',
@@ -77,4 +94,20 @@ export function getCanonicalUrl(path = '/') {
  */
 export function isPlaceholder(value) {
   return typeof value === 'string' && value.includes('{{');
+}
+
+/**
+ * @param {unknown} value
+ * @returns {value is string}
+ */
+export function hasResolvedValue(value) {
+  return typeof value === 'string' && value.trim().length > 0 && !isPlaceholder(value);
+}
+
+/**
+ * @param {Array<unknown>} values
+ * @returns {string[]}
+ */
+export function getResolvedValues(values) {
+  return values.filter(hasResolvedValue);
 }

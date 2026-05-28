@@ -2,7 +2,7 @@
 
 import Head from 'next/head';
 
-import { DEFAULT_SEO, SEO_PLACEHOLDERS, getCanonicalUrl } from '@/lib/seo';
+import { DEFAULT_SEO, SEO_PLACEHOLDERS, getCanonicalUrl, hasResolvedValue } from '@/lib/seo';
 
 /**
  * @param {{
@@ -33,7 +33,12 @@ export default function SeoHead({
       <meta name="keywords" content={keywordContent} />
       <meta name="robots" content={robots} />
       <meta name="googlebot" content="index,follow,max-image-preview:large" />
-      <meta name="google-site-verification" content={SEO_PLACEHOLDERS.gscVerificationCode} />
+      {hasResolvedValue(SEO_PLACEHOLDERS.gscVerificationCode) ? (
+        <meta
+          name="google-site-verification"
+          content={SEO_PLACEHOLDERS.gscVerificationCode}
+        />
+      ) : null}
       <link rel="canonical" href={canonical} />
 
       <meta property="og:type" content="website" />
